@@ -1,0 +1,17 @@
+[workspace]
+members = ["crates/openkey-engine", "crates/openkey-app"]
+resolver = "2"
+
+[workspace.package]
+version = "3.0.0-alpha.1"
+edition = "2024"
+license = "GPL-3.0-only"
+repository = "https://github.com/phonglh-tvb/OpenKey"
+rust-version = "1.85"
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[workspace.lints.clippy]
+all = "warn"
+pedantic = "warn"

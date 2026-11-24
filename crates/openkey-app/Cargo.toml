@@ -1,0 +1,16 @@
+[package]
+name = "openkey"
+description = "OpenKey Vietnamese input daemon for macOS and Linux"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+enigo = "0.6.1"
+inputs = "0.1.1"
+openkey-engine = { path = "../openkey-engine" }
+
+[lints]
+workspace = true
