@@ -1,12 +1,12 @@
 [workspace]
-members = ["crates/openkey-engine", "crates/openkey-app"]
+members = ["crates/lactype-engine", "crates/lactype-app"]
 resolver = "2"
 
 [workspace.package]
 version = "3.0.0-alpha.1"
 edition = "2024"
 license = "GPL-3.0-only"
-repository = "https://github.com/phonglh-tvb/OpenKey"
+repository = "https://github.com/phonglh-tvb/LacType"
 rust-version = "1.85"
 
 [workspace.lints.rust]

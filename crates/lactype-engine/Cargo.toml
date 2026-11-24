@@ -1,6 +1,6 @@
 [package]
-name = "openkey-engine"
-description = "Pure Rust Vietnamese input engine for OpenKey"
+name = "lactype-engine"
+description = "Pure Rust Vietnamese input engine for LacType"
 version.workspace = true
 edition.workspace = true
 license.workspace = true

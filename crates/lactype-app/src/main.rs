@@ -8,7 +8,7 @@ use std::{
 
 use enigo::{Direction, Enigo, Key, Keyboard, Settings};
 use inputs::{Event, EventDisposition, EventKind, GrabMode, KeyCode, LogicalKey, PressState};
-use openkey_engine::{Engine, InputMethod};
+use lactype_engine::{Engine, InputMethod};
 
 fn main() -> ExitCode {
     let mut args = env::args().skip(1);
@@ -33,13 +33,8 @@ fn main() -> ExitCode {
             println!("{:?}", inputs::permission_status());
             ExitCode::SUCCESS
         }
-        _ => {
-            println!("OpenKey {}", env!("CARGO_PKG_VERSION"));
-            println!("Usage: openkey convert [telex|vni] <text>");
-            println!("       openkey daemon [telex|vni]");
-            println!("       openkey permissions");
-            ExitCode::SUCCESS
-        }
+        None if cfg!(target_os = "macos") => run_daemon(InputMethod::Telex),
+        _ => print_help(),
     }
 }
 
@@ -76,12 +71,20 @@ fn run_daemon(method: InputMethod) -> ExitCode {
         }
     };
 
-    println!("OpenKey is active ({method:?}). Press Ctrl+C to stop.");
+    println!("LacType is active ({method:?}). Press Ctrl+C to stop.");
     while listener.is_healthy() {
         thread::sleep(Duration::from_secs(1));
     }
     eprintln!("The keyboard listener stopped unexpectedly.");
     ExitCode::FAILURE
+}
+
+fn print_help() -> ExitCode {
+    println!("LacType {}", env!("CARGO_PKG_VERSION"));
+    println!("Usage: lactype convert [telex|vni] <text>");
+    println!("       lactype daemon [telex|vni]");
+    println!("       lactype permissions");
+    ExitCode::SUCCESS
 }
 
 fn handle_event(event: &Event, runtime: &Mutex<Runtime>) -> EventDisposition {

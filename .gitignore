@@ -10,3 +10,4 @@
 /Sources/OpenKey/win32/OpenKey/OpenKeyUpdate/x64/Release
 target/
 .DS_Store
+dist/
